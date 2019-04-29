@@ -11,6 +11,7 @@
 //--------------------------------------------------------------------
 
 #include "include/Engine.h"
+#include <iostream>
 
 int main(int argc, char *argv[]) {
 
@@ -18,6 +19,10 @@ int main(int argc, char *argv[]) {
 
   theEngine->configure();
   theEngine->run();
+
+  std::cout << *theEngine << std::endl;
+  theEngine->debug(true);
+  std::cout << *theEngine << std::endl;
 
   delete theEngine;
 

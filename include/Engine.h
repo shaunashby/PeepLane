@@ -12,6 +12,8 @@
 #ifndef ENGINE_H            
 #define ENGINE_H            
 
+#include <iosfwd>
+
 namespace PeepLane {
   // New class declaration:
   class Engine {
@@ -20,19 +22,20 @@ namespace PeepLane {
     virtual ~Engine();
 
     // Public methods:
-    void configure();
-    void debug();
-    void run();
-
-  protected:
+    virtual void configure();
+    virtual bool debug() const;
+    virtual void debug(bool flag);
+    virtual void run();
 
   private:
-    const bool m_debug;
+    bool m_debug;
 
     Engine(const Engine & r);
     Engine & operator=(const Engine & r);
 
   };
+
+  std::ostream & operator<< (std::ostream & O, const Engine & e);
 }
 
 #endif // ENGINE_H            

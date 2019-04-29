@@ -11,6 +11,7 @@
 //--------------------------------------------------------------------
 
 #include "include/Engine.h"
+#include <ostream>
 
 namespace PeepLane {
   Engine::Engine()
@@ -23,6 +24,31 @@ namespace PeepLane {
   void Engine::configure() {
   }
 
-  void Engine::run() {    
+  bool Engine::debug() const {
+    return m_debug;
+  }
+
+  void Engine::debug(bool flag) {
+    m_debug = flag;
+  }
+
+  void Engine::run() {
+  }
+
+  Engine::Engine(const Engine & i)
+    : m_debug(i.m_debug)
+  {}
+
+  Engine & Engine::operator=(const Engine & r) {
+    if (this != &r) {
+    }
+
+    return *this;
+  }
+
+  std::ostream & operator<< (std::ostream & O, const Engine & e) {
+    O << "| Engine configured. Debugging is ";
+    (e.debug()) ? O << "ON." : O << "OFF.";
+    return O;
   }
 }
